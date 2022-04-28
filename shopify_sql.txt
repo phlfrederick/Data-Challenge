@@ -1,0 +1,34 @@
+a) SELECT COUNT(*) AS 'Total Orders Shipped by Speedy'
+FROM Orders 
+WHERE ShipperID IN(
+SELECT ShipperID 
+FROM Shippers
+WHERE ShipperID==1);
+
+## Answer: 54 orders were shipped in total by Speedy Express
+
+
+b) SELECT LastName FROM Employees as tab1
+JOIN (SELECT EmployeeID, COUNT(*) AS 'Order Count'
+FROM Orders
+GROUP BY(EmployeeID)
+ORDER BY COUNT(*) DESC
+LIMIT 1) as tab2 ON tab1.EmployeeID==tab2.EmployeeID;
+
+## Answer: The last name of the employee with the most orders is Peacock
+
+c)
+
+
+SELECT Products.ProductID,Products.Productname, COUNT(*) as "Total Number of Orders" from products 
+JOIN Orderdetails on Products.ProductID==Orderdetails.ProductID
+JOIN Orders on Orderdetails.OrderID=Orders.OrderID
+JOIN Customers ON 
+Customers.CustomerID==Orders.CustomerID
+WHERE Country=="Germany"
+GROUP BY Products.ProductID
+ORDER BY count(*) DESC
+LIMIT 1;  
+
+## Answer: The product that was ordered the most by customers in Germany is the Gorgonzola Telino which
+   happened to be ordered by 5 different German customers
