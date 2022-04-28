@@ -1,0 +1,8 @@
+a) Unfortunately, AOV is a metric that is not robust to outliers and upon examining the dataset I was able to identify a couple of shops,shop id 42 and 78 in particular, that
+   were skewing the order amounts distribution in different ways. Shop 78 sells a single pair of shoes for as high as $25,000+ which led me to believe it's more likely a data entry 
+   issue otherwise WOW! In the case of store 42, there is one particular customer, user_id=607 who is placing large bulk orders of 2000 pairs of shoes a price point of $352 per pair 
+   so over $700,000. We need to determine a metric that will prove to be robust to outliers such as these.
+
+b) A better metric to consider would be the median order value which is less sensitive to the aforementioned outliers and much more realistic of the typical order value across our shops.
+
+c) the median order value for this dataset is $284.00
